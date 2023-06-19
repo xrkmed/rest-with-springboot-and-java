@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xrkmed.restwithspringbootandjava.Exceptions.UnsupportedMathOperationException;
+import com.xrkmed.restwithspringbootandjava.data.dtov1.PersonDTO;
 import com.xrkmed.restwithspringbootandjava.model.Person;
 import com.xrkmed.restwithspringbootandjava.services.PersonServices;
 
@@ -27,7 +28,7 @@ public class PersonController {
 	@RequestMapping(value = "/{id}", 
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Person> findById(
+	public ResponseEntity<PersonDTO> findById(
 			@PathVariable(value="id") Long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
@@ -35,7 +36,7 @@ public class PersonController {
 	@RequestMapping(value = "/", 
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Person>> findAll() {
+	public ResponseEntity<List<PersonDTO>> findAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 	
@@ -43,7 +44,7 @@ public class PersonController {
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Person> create(@RequestBody Person person
+	public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO person
 			) {
 		return ResponseEntity.ok(service.create(person));
 	}
@@ -51,7 +52,7 @@ public class PersonController {
 	@RequestMapping(value = "/update",
 			method = RequestMethod.PUT,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Person> update(@RequestBody Person person){
+	public ResponseEntity<PersonDTO> update(@RequestBody PersonDTO person){
 		return ResponseEntity.ok(service.update(person));
 	}
 	
