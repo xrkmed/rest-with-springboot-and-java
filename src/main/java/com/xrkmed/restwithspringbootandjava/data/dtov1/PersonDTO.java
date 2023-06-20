@@ -3,10 +3,18 @@ package com.xrkmed.restwithspringbootandjava.data.dtov1;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class PersonDTO implements Serializable {
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+
+@JsonPropertyOrder({"id", "firstName", "lastName", "gender"})
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private long id;
+	@Mapping("id")
+	private long key;
 	private String firstName;
 	private String lastName;
 	private String gender;
@@ -25,11 +33,11 @@ public class PersonDTO implements Serializable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setKey(long key) {
+		this.key = key;
 	}
 	public long getId() {
-		return id;
+		return key;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -43,7 +51,7 @@ public class PersonDTO implements Serializable {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(key);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -54,6 +62,6 @@ public class PersonDTO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PersonDTO other = (PersonDTO) obj;
-		return id == other.id;
+		return key == other.key;
 	}
 }
