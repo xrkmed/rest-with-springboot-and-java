@@ -1,6 +1,6 @@
 package com.xrkmed.restwithspringbootandjava.securityJwt;
 
-import org.springframework.beans.factory.annotation.Autowired;import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
